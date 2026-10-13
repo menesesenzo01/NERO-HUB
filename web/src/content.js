@@ -5,6 +5,7 @@ import { STATIC, asset } from './api.js';
 export const APPS = {
   'nero-assistente': {
     anchor: 'assistente',
+    plat: 'Rotina e finanças',
     logo: asset('/apps/assist-logo.png'),
     short: 'Nero Assistente',
     cta: 'Conhecer o Nero Assistente',
@@ -18,12 +19,16 @@ export const APPS = {
     screens: [
       [asset('/apps/assist-conversa.webp'), 'Conversa'],
       [asset('/apps/assist-agenda.webp'), 'Agenda'],
+      [asset('/apps/assist-organizacao.webp'), 'Organização'],
       [asset('/apps/assist-financas.webp'), 'Finanças'],
+      [asset('/apps/assist-metas.webp'), 'Metas'],
+      [asset('/apps/assist-relatorios.webp'), 'Relatórios'],
     ],
     frame: 'phone',
   },
   'nero-docs': {
     anchor: 'docs',
+    plat: 'Documentos',
     logo: asset('/apps/docs-logo.png'),
     short: 'Nero Docs',
     cta: 'Conhecer o Nero Docs',
@@ -48,6 +53,7 @@ export const APPS = {
   },
   'nero-docs-chrome': {
     anchor: 'chrome',
+    plat: 'Extensão para Chrome',
     logo: asset('/apps/chrome-logo.png'),
     short: 'Extensão Chrome',
     cta: 'Conhecer a extensão',
@@ -61,7 +67,6 @@ export const APPS = {
     screens: [
       [asset('/apps/chrome-catalogo.webp'), 'Catálogo'],
       [asset('/apps/chrome-pdf-word.webp'), 'PDF para Word'],
-      [asset('/apps/chrome-dividir.webp'), 'Dividir PDF'],
     ],
     frame: 'browser',
   },
@@ -72,6 +77,7 @@ export function appContent(project) {
   return (
     APPS[project.slug] ?? {
       anchor: project.slug,
+      plat: project.tag || project.segment,
       logo: project.icon && !STATIC ? `/icons/${project.icon}` : asset('/nero-hub-logo.png'),
       short: project.name,
       cta: `Conhecer o ${project.name}`,

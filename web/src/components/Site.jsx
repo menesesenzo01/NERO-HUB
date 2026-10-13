@@ -7,7 +7,7 @@ import UploadModal from './UploadModal.jsx';
 import NewProjectModal from './NewProjectModal.jsx';
 import { appContent, sortProjects } from '../content.js';
 import { formatDate } from '../format.js';
-import { STATIC, api, asset } from '../api.js';
+import { BASE, STATIC, api, asset } from '../api.js';
 
 const TILTS = ['-1.5deg', '1deg', '-.8deg', '1.2deg'];
 const SHOT_TILTS = ['-2deg', '1.5deg', '-.5deg'];
@@ -120,10 +120,6 @@ export default function Site({ info, library, setLibrary }) {
     .sort((a, b) => b.v.createdAt.localeCompare(a.v.createdAt))
     .slice(0, 8);
 
-  const goToQr = (slug) => {
-    const i = projects.findIndex((p) => p.slug === slug);
-    if (i >= 0) setSel(i);
-  };
 
   const [a, b, c] = projects.map(appContent);
 
@@ -140,6 +136,7 @@ export default function Site({ info, library, setLibrary }) {
             <a href="#projetos" className="hover:text-hub">Projetos</a>
             <a href="#biblioteca" className="hover:text-hub">Biblioteca</a>
             <a href="#atualizacoes" className="hover:text-hub">Atualizações</a>
+            <a href={`${BASE}loja${STATIC ? '/' : ''}`} className="hover:text-hub">Loja</a>
           </div>
           <div className="flex items-center gap-3">
             {isAdmin && <PublishButton />}
@@ -148,8 +145,8 @@ export default function Site({ info, library, setLibrary }) {
                 <Plus size={18} strokeWidth={3} /> <span className="hidden sm:inline">Projeto</span>
               </button>
             )}
-            <Magnetic href="#biblioteca" className="btn !py-2.5">
-              Baixar apps
+            <Magnetic href={`${BASE}loja${STATIC ? '/' : ''}`} className="btn !py-2.5">
+              Loja
             </Magnetic>
           </div>
         </nav>
@@ -277,11 +274,7 @@ export default function Site({ info, library, setLibrary }) {
                   <p className="m-0 text-xl font-extrabold leading-snug text-pretty">{pc.lead}</p>
                   {pc.body && <p className="m-0 text-[15px] leading-relaxed text-muted text-pretty">{pc.body}</p>}
                   <div className="flex flex-wrap gap-3">
-                    <Magnetic
-                      href="#biblioteca"
-                      className="btn"
-                      onClick={() => goToQr(p.slug)}
-                    >
+                    <Magnetic href={`${BASE}loja/${p.slug}${STATIC ? '/' : ''}`} className="btn">
                       {p.latest ? `Baixar v${p.latest.version}` : pc.cta}
                     </Magnetic>
                   </div>

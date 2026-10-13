@@ -35,9 +35,12 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+/* em @layer base para não passar por cima das cores dos botões (.btn) */
+@layer base {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 }
 
 .font-display {

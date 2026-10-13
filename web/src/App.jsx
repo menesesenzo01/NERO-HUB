@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { Loader2, ServerCrash } from 'lucide-react';
 import Site from './components/Site.jsx';
 import DownloadPage from './components/DownloadPage.jsx';
+import StorePage from './components/StorePage.jsx';
 import { BASE, api } from './api.js';
 
 // /baixar/<app> é para onde o QR Code de cada app aponta; /m lista todos para o celular.
@@ -10,6 +11,8 @@ function route() {
   const m = path.match(/^\/baixar\/([\w-]+)/);
   if (m) return { page: 'download', slug: m[1] };
   if (/^\/m(\/|$)/.test(path)) return { page: 'download', slug: null };
+  const loja = path.match(/^\/loja(?:\/([\w-]+))?/);
+  if (loja) return { page: 'store', slug: loja[1] ?? null };
   return { page: 'site' };
 }
 
@@ -53,5 +56,6 @@ export default function App() {
     );
   }
 
+  if (page === 'store') return <StorePage info={info} library={library} slug={slug} />;
   return page === 'download' ? <DownloadPage library={library} slug={slug} /> : <Site info={info} library={library} setLibrary={setLibrary} />;
 }
