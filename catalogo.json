@@ -1,0 +1,104 @@
+{
+  "segments": [
+    "Aplicativos",
+    "Ferramentas",
+    "Extensões",
+    "Testes"
+  ],
+  "updatedAt": "2026-10-13T22:59:50.736Z",
+  "projects": [
+    {
+      "id": "64efed39",
+      "slug": "nero-docs",
+      "name": "Nero Docs",
+      "segment": "Ferramentas",
+      "platform": "android",
+      "tag": "Android · documentos",
+      "description": "Converta documentos, organize PDFs e trabalhe com seus arquivos diretamente no celular.",
+      "accent": "#3b6cff",
+      "downloads": 0,
+      "versions": [
+        {
+          "id": "5bb6fdac",
+          "version": "2.1.1",
+          "changelog": "Versão atual do Nero Docs importada para o Hub.",
+          "fileName": "nero-docs-2.1.1.apk",
+          "size": 66873970,
+          "createdAt": "2026-10-13T12:19:34.973Z",
+          "url": "https://github.com/nerohubbr/nerohubbr.github.io/releases/download/nero-docs-v2.1.1/nero-docs-2.1.1.apk"
+        }
+      ],
+      "latest": {
+        "id": "5bb6fdac",
+        "version": "2.1.1",
+        "changelog": "Versão atual do Nero Docs importada para o Hub.",
+        "fileName": "nero-docs-2.1.1.apk",
+        "size": 66873970,
+        "createdAt": "2026-10-13T12:19:34.973Z",
+        "url": "https://github.com/nerohubbr/nerohubbr.github.io/releases/download/nero-docs-v2.1.1/nero-docs-2.1.1.apk"
+      }
+    },
+    {
+      "id": "7aa147f7",
+      "slug": "nero-assistente",
+      "name": "Nero Assistente",
+      "segment": "Aplicativos",
+      "platform": "android",
+      "tag": "Android · rotina e finanças",
+      "description": "Seu assistente pessoal para organizar a rotina, acompanhar compromissos e cuidar das finanças em um só lugar.",
+      "accent": "#38c9a0",
+      "downloads": 0,
+      "versions": [
+        {
+          "id": "0f521901",
+          "version": "3.5",
+          "changelog": "Versão atual do Nero (celulares 64 bits, arm64-v8a).",
+          "fileName": "nero-assistente-3.5.apk",
+          "size": 13899208,
+          "createdAt": "2026-10-13T12:19:35.014Z",
+          "url": "https://github.com/nerohubbr/nerohubbr.github.io/releases/download/nero-assistente-v3.5/nero-assistente-3.5.apk"
+        }
+      ],
+      "latest": {
+        "id": "0f521901",
+        "version": "3.5",
+        "changelog": "Versão atual do Nero (celulares 64 bits, arm64-v8a).",
+        "fileName": "nero-assistente-3.5.apk",
+        "size": 13899208,
+        "createdAt": "2026-10-13T12:19:35.014Z",
+        "url": "https://github.com/nerohubbr/nerohubbr.github.io/releases/download/nero-assistente-v3.5/nero-assistente-3.5.apk"
+      }
+    },
+    {
+      "id": "342b07c0",
+      "slug": "nero-docs-chrome",
+      "name": "Nero Docs — Extensão para Chrome",
+      "segment": "Extensões",
+      "platform": "chrome",
+      "tag": "Chrome · extensão",
+      "description": "Ferramentas de PDF direto no navegador, com processamento dos arquivos no computador.",
+      "accent": "#1d3fe0",
+      "downloads": 0,
+      "versions": [
+        {
+          "id": "3a453fb5",
+          "version": "2.5.0",
+          "changelog": "Imagens no PDF sem perda de qualidade.\nPágina no tamanho Igual à imagem por padrão.",
+          "fileName": "nero-docs-chrome-2.5.0.zip",
+          "size": 3323817,
+          "createdAt": "2026-10-13T21:04:31.364Z",
+          "url": "https://github.com/nerohubbr/nerohubbr.github.io/releases/download/nero-docs-chrome-v2.5.0/nero-docs-chrome-2.5.0.zip"
+        }
+      ],
+      "latest": {
+        "id": "3a453fb5",
+        "version": "2.5.0",
+        "changelog": "Imagens no PDF sem perda de qualidade.\nPágina no tamanho Igual à imagem por padrão.",
+        "fileName": "nero-docs-chrome-2.5.0.zip",
+        "size": 3323817,
+        "createdAt": "2026-10-13T21:04:31.364Z",
+        "url": "https://github.com/nerohubbr/nerohubbr.github.io/releases/download/nero-docs-chrome-v2.5.0/nero-docs-chrome-2.5.0.zip"
+      }
+    }
+  ]
+}
