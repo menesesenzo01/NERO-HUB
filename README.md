@@ -2,7 +2,7 @@
 
 Site e biblioteca do ecossistema Nero (Nero Assistente, Nero Docs e a extensão Nero Docs para Chrome). Você publica versões no PC e baixa no celular pela rede local, sem nuvem.
 
-Cada app tem o próprio QR Code na seção **Biblioteca**. Ele abre `http://<IP>:5180/baixar/<app>` e o download da versão mais nova começa sozinho.
+Cada app tem a própria página na **Loja** (/loja/<app>), com Baixar APK e QR Code. O QR abre `http://<IP>:5180/baixar/<app>` e o download da versão mais nova começa sozinho.
 
 ## Como usar
 
@@ -47,7 +47,7 @@ NERO HUB/
     ├── public/apps/       logos e telas de cada app
     └── src/
         ├── content.js     textos e telas de cada app
-        └── components/    Site, QrStation, DownloadPage, Upload
+        └── components/    Site, StorePage, DownloadPage, Upload
 ```
 
 ## API

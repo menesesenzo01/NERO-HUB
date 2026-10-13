@@ -1,8 +1,7 @@
 import { useMemo, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle2, Globe, Loader2, Plus, TriangleAlert } from 'lucide-react';
+import { CheckCircle2, Globe, Loader2, Plus, TriangleAlert, Upload } from 'lucide-react';
 import NeroMark from './NeroMark.jsx';
-import QrStation from './QrStation.jsx';
 import UploadModal from './UploadModal.jsx';
 import NewProjectModal from './NewProjectModal.jsx';
 import { appContent, sortProjects } from '../content.js';
@@ -105,7 +104,6 @@ function SectionHead({ label, children, center }) {
 
 export default function Site({ info, library, setLibrary }) {
   const projects = useMemo(() => sortProjects(library.projects), [library.projects]);
-  const [sel, setSel] = useState(0);
   const [uploadFor, setUploadFor] = useState(null);
   const [creating, setCreating] = useState(false);
 
@@ -134,7 +132,6 @@ export default function Site({ info, library, setLibrary }) {
           </a>
           <div className="hidden gap-7 text-sm font-extrabold md:flex">
             <a href="#projetos" className="hover:text-hub">Projetos</a>
-            <a href="#biblioteca" className="hover:text-hub">Biblioteca</a>
             <a href="#atualizacoes" className="hover:text-hub">Atualizações</a>
             <a href={`${BASE}loja${STATIC ? '/' : ''}`} className="hover:text-hub">Loja</a>
           </div>
@@ -182,8 +179,8 @@ export default function Site({ info, library, setLibrary }) {
             <Magnetic href="#projetos" className="btn">
               Explorar Hub
             </Magnetic>
-            <Magnetic href="#biblioteca" className="btn btn-white">
-              Biblioteca →
+            <Magnetic href={`${BASE}loja${STATIC ? '/' : ''}`} className="btn btn-white">
+              Loja →
             </Magnetic>
           </div>
         </div>
@@ -277,6 +274,11 @@ export default function Site({ info, library, setLibrary }) {
                     <Magnetic href={`${BASE}loja/${p.slug}${STATIC ? '/' : ''}`} className="btn">
                       {p.latest ? `Baixar v${p.latest.version}` : pc.cta}
                     </Magnetic>
+                    {isAdmin && (
+                      <button onClick={() => setUploadFor(p)} className="btn btn-white">
+                        <Upload size={18} strokeWidth={2.5} /> Nova versão
+                      </button>
+                    )}
                   </div>
                 </div>
                 {pc.groups.length > 0 && (
@@ -312,25 +314,6 @@ export default function Site({ info, library, setLibrary }) {
         );
       })}
 
-      {/* Biblioteca + QR Codes */}
-      <section id="biblioteca" className="relative bg-cream px-5 py-[110px]">
-        <div className="relative mx-auto max-w-[1180px]">
-          <Reveal className="mb-11 flex flex-wrap items-end justify-between gap-6">
-            <div className="flex max-w-[620px] flex-col gap-4">
-              <span className="label-tag">Biblioteca</span>
-              <h2 className="m-0 font-display text-[clamp(36px,5vw,60px)] font-bold leading-none text-balance">
-                Escolha um app. <span className="text-hub">Aponte o celular.</span>
-              </h2>
-            </div>
-            <p className="m-0 max-w-[380px] text-base leading-relaxed text-muted">
-              Cada app tem o próprio QR Code, sempre com a versão mais nova.{STATIC ? ' Funciona de qualquer lugar com internet.' : ' O celular precisa estar no mesmo Wi-Fi deste PC.'}
-            </p>
-          </Reveal>
-          <Reveal delay={120}>
-            <QrStation info={info} projects={projects} sel={Math.min(sel, projects.length - 1)} setSel={setSel} onUpload={setUploadFor} />
-          </Reveal>
-        </div>
-      </section>
 
       {/* Atualizações */}
       <section id="atualizacoes" className="relative border-y-[3px] border-ink bg-sky px-5 pb-[120px] pt-[100px]">
@@ -379,7 +362,7 @@ export default function Site({ info, library, setLibrary }) {
                   {pc.short}
                 </a>
               ))}
-              <a href="#biblioteca" className="hover:text-sun">Biblioteca</a>
+              <a href={`${BASE}loja${STATIC ? '/' : ''}`} className="hover:text-sun">Loja</a>
               <a href="#atualizacoes" className="hover:text-sun">Atualizações</a>
             </div>
           </div>
