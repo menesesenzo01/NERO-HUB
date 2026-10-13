@@ -1,0 +1,20 @@
+{
+  "name": "nero-hub",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Nero Hub: biblioteca central do ecossistema Nero com distribuição de APKs pela rede local.",
+  "workspaces": [
+    "server",
+    "web"
+  ],
+  "scripts": {
+    "dev": "concurrently -n server,web -c magenta,cyan \"npm:dev -w server\" \"npm:dev -w web\"",
+    "build": "npm run build -w web",
+    "start": "npm run build && npm run start -w server",
+    "serve": "npm run start -w server",
+    "importar": "npm run importar -w server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
