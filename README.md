@@ -12,6 +12,14 @@ No celular (mesmo Wi-Fi), aponte a câmera para o QR Code do app ou abra `http:/
 
 Na primeira vez o Windows pergunta se o Node.js pode usar a rede. Marque **Redes privadas** e clique em **Permitir**, senão o celular não enxerga o PC.
 
+## Site público (GitHub)
+
+O site fica em **https://menesesenzo01.github.io/NERO-HUB/** e os arquivos dos apps ficam nos Releases do repositório.
+
+Para atualizar: publique a versão nova no Hub do PC (botão de envio) e clique em **Publicar no site** no topo. O botão envia a versão mais nova de cada app para o GitHub Releases, apaga lá as versões antigas e republica o site no branch `gh-pages`. Pelo terminal é o mesmo que rodar `node scripts/publicar-github.mjs`.
+
+O QR Code de cada app no site público abre `.../NERO-HUB/baixar/<app>/` e o download começa sozinho.
+
 ## Comandos
 
 | Comando | O que faz |
