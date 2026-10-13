@@ -82,13 +82,16 @@ for (const p of db.projects) {
 fs.writeFileSync(CATALOG, JSON.stringify(catalog, null, 2) + '\n');
 
 // Monta o site estático e publica no branch gh-pages (o GitHub Pages serve esse branch).
-const repoName = repo.split('/')[1];
+const [owner, repoName] = repo.split('/');
+// Repositório <dono>.github.io vira o site principal (sem /<repo> no endereço).
+const rootSite = repoName.toLowerCase() === `${owner.toLowerCase()}.github.io`;
+const siteBase = rootSite ? '/' : `/${repoName}/`;
 console.log('Montando o site…');
 // Vai para web/dist-pages, para não trocar o build que o Hub do PC serve (web/dist).
 const DIST = path.join(ROOT, 'web', 'dist-pages');
 run(process.execPath, [path.join(ROOT, 'node_modules', 'vite', 'bin', 'vite.js'), 'build', '--outDir', DIST, '--emptyOutDir'], {
   cwd: path.join(ROOT, 'web'),
-  env: { ...process.env, VITE_STATIC: '1', VITE_BASE: `/${repoName}/` },
+  env: { ...process.env, VITE_STATIC: '1', VITE_BASE: siteBase },
 });
 run(process.execPath, [path.join(ROOT, 'web', 'scripts', 'paginas-estaticas.mjs'), DIST]);
 
@@ -101,5 +104,4 @@ inDist('-c', 'user.name=Nero Hub', '-c', 'user.email=nero-hub@users.noreply.gith
 inDist('push', '-q', '-f', remote, 'gh-pages');
 fs.rmSync(path.join(DIST, '.git'), { recursive: true, force: true });
 
-const [owner] = repo.split('/');
-console.log(`✓ Site publicado: https://${owner.toLowerCase()}.github.io/${repoName}/ (atualiza em 1 a 2 minutos)`);
+console.log(`✓ Site publicado: https://${owner.toLowerCase()}.github.io${siteBase} (atualiza em 1 a 2 minutos)`);
